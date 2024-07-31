@@ -1,159 +1,149 @@
----
-title: "Getting started"
----
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زيادة متابعين وسائل التواصل الاجتماعي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>زيادة متابعين وسائل التواصل الاجتماعي</h1>
+        <div class="platforms">
+            <div class="platform">
+                <h2>إنستغرام</h2>
+                <form class="followersForm">
+                    <label for="instagram-username">اسم المستخدم:</label>
+                    <input type="text" id="instagram-username" name="instagram-username" required>
+                    <label for="instagram-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="instagram-followers" name="instagram-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>فيسبوك</h2>
+                <form class="followersForm">
+                    <label for="facebook-username">اسم المستخدم:</label>
+                    <input type="text" id="facebook-username" name="facebook-username" required>
+                    <label for="facebook-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="facebook-followers" name="facebook-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>تويتر</h2>
+                <form class="followersForm">
+                    <label for="twitter-username">اسم المستخدم:</label>
+                    <input type="text" id="twitter-username" name="twitter-username" required>
+                    <label for="twitter-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="twitter-followers" name="twitter-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>تيك توك</h2>
+                <form class="followersForm">
+                    <label for="tiktok-username">اسم المستخدم:</label>
+                    <input type="text" id="tiktok-username" name="tiktok-username" required>
+                    <label for="tiktok-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="tiktok-followers" name="tiktok-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
-The easiest way to get started with Solid is to use the SolidStart starter. SolidStart is a collection of templates that can be used to quickly bootstrap a new Solid application. 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-**1. Install SolidStart**
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-Once you have created a directory for your new application, you can initialize SolidStart with the following command:
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
 
-<TabsCodeBlocks>
-<div id="npm">
-```bash frame="none"
-npm init solid@latest
-```
-</div>
+.platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-<div id="yarn">
-```bash frame="none"
-yarn create solid
-```
-</div>
+.platform {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
-<div id="pnpm">
-```bash frame="none"
-pnpm create solid
-```
-</div>
+h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
 
-<div id="bun">
-```bash frame="none"
-bun create solid
-```
-</div>
-</TabsCodeBlocks>
+form {
+    display: flex;
+    flex-direction: column;
+}
 
-**2. Choose a template**
+label {
+    margin-bottom: 5px;
+    color: #333;
+}
 
-When you run the command above, SolidStart will prompt you to choose a template for your new application.
-You can see a [list of these options in the SolidStart repository](https://github.com/solidjs/solid-start/tree/main/examples).
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-```bash frame="terminal"
-? Which template do you want to use? › - Use arrow-keys. Return to submit.
-❯   bare
-    hackernews
-    with-auth
-    with-mdx
-    with-tailwindcss
-    with-vitest
-```
+button {
+    padding: 10px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-Following the prompts, you will be asked whether you want to use Server Side Rendering and TypeScript. 
-Choose your desired options to continue.
+button:hover {
+    background-color: #007bb5;
+}
 
-**3. Install dependencies**
+#message {
+    margin-top: 20px;
+    color: #333;
+}
 
-Once you have chosen your template and configuration options, you can navigate to the directory you created and run the following command to install dependencies:
+document.querySelectorAll('.followersForm').forEach(form => {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-<TabsCodeBlocks>
-<div id="npm">
-```bash frame="none"
-npm install
-```
-</div>
+        const platform = this.parentElement.querySelector('h2').textContent;
+        const username = this.querySelector('input[type="text"]').value;
+        const followers = this.querySelector('input[type="number"]').value;
 
-<div id="yarn">
-```bash frame="none"
-yarn install
-```
-</div>
-
-<div id="pnpm">
-```bash frame="none"
-pnpm i
-```
-</div>
-
-<div id="bun">
-```bash frame="none"
-bun install
-```
-</div>
-</TabsCodeBlocks>
-
-After this command has finished, your new SolidStart application is ready to go!
-
-**4. Run your application**
-
-To run your application locally, you can use the following command:
-
-<TabsCodeBlocks>
-<div id="npm">
-```bash frame="none"
-npm run dev
-```
-</div>
-
-<div id="yarn">
-```bash frame="none"
-yarn dev
-```
-</div>
-
-<div id="pnpm">
-```bash frame="none"
-pnpm dev
-```
-</div>
-
-<div id="bun">
-```bash frame="none"
-bun dev
-```
-</div>
-</TabsCodeBlocks>
-
-Your application should now be running locally on port 3000. 
-You can view it by navigating to [http://localhost:3000](http://localhost:3000).
-
-<Callout>
-    SolidStart uses [Vinxi](https://vinxi.vercel.app/) both for starting a development server with [Vite](https://vitejs.dev/) and for building and starting a production server with [Nitro](https://nitro.unjs.io/).
-
-    When you run your application, you are actually running `vinxi dev` under the hood. 
-    You can read more about the Vinxi CLI, and how it can be configured [here](https://vinxi.vercel.app/api/cli.html).
-
-    You can read more about the [Vinxi CLI and how it is configured in the Vinxi documentation](https://vinxi.vercel.app/api/cli.html).
-</Callout>
-
-## Project files
-
-SolidStart will create a new directory for your project, and populate it with the necessary files and directories to get you started.
-These files and directories are the basic structure of a SolidStart application, and you can modify them to suit your needs.
-The default structure of a SolidStart application looks like this:
-
-```
-public/
-src/
-├── routes/
-│   ├── index.tsx
-├── entry-client.tsx
-├── entry-server.tsx
-├── app.tsx
-```
-
-**Note:** Depending on the configuration options you chose when creating your project, your file structure may look slightly different. 
-For example, if you chose to use JavaScript rather than TypeScript, your file extensions will be `.jsx` instead of `.tsx`.
-
-Each directory and file in this structure serves a specific purpose in your SolidStart application:
-- `public/` - contains the publicly-accessible assets for your application. 
-This is where images, fonts, and other files that you want to be accessible to the public should be placed.
-- `src/` - where your Start application code will live.
-It is aliased to `~/` for importing in your code.
-- `src/routes/` - any files or pages will be located in this directory.
-You can learn more about the [`routes` folder in the routing section](/solid-start/building-your-application/routing).
-- [`src/entry-client.tsx`](/solid-start/reference/entrypoints/entry-client) - this file is what loads and _hydrates_ the JavaScript for our application on the client side (in browser).
-In most cases, you will **not** need to modify this file.
-- [`src/entry-server.tsx`](/solid-start/reference/entrypoints/entry-server) - this file will handle requests on the server.
-Like `entry-client.tsx`, in most cases you will **not** need to modify this file.
-- [`app.tsx`](/solid-start/reference/entrypoints/app) - this is the HTML root of your application both for client and server rendering. You can think of this as the shell inside which your application will be rendered.
+        if (username && followers) {
+            document.getElementById('message').textContent = `تم إرسال طلب زيادة المتابعين لحساب ${username} على منصة ${platform} لعدد ${followers} متابع.`;
+        } else {
+            document.getElementById('message').textContent = 'يرجى ملء جميع الحقول.';
+        }
+    });
+});
